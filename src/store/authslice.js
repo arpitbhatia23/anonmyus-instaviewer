@@ -1,10 +1,10 @@
 import { createSlice,combineReducers } from "@reduxjs/toolkit";
-const initialState={
-   status : false,
-   userData:null,
-   data:null
+// const initialState={
+//    status : false,
+//    userData:null,
+//    data:null
 
-}
+// }
 export const authslice = createSlice({
     name:"auth" ,
      initialState:{
