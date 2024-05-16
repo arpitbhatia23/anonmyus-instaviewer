@@ -10,7 +10,7 @@ function Home() {
   return (
 
     
-        <div className='w-fullpy-8 mt-4 text-center'>
+        <div className='w-full min-h-96 mt-4 text-center'>
               <Search/>
                <Profile/> 
                <Profilenav/>
