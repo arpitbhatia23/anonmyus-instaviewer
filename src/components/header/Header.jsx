@@ -7,7 +7,7 @@ function Header() {
    const navigate = useNavigate()
    const navitems = [{
     name:'Home',
-    slug:"/home",
+    slug:"/",
     active:authstatus,
    },
    {
