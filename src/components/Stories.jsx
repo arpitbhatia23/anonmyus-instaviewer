@@ -84,7 +84,7 @@ return !loading? (
     }
     </div> ):
     <div className='w-full  flex flex-col  items-center text-black text-center'>
-      loading
+      loading...
     </div>
   
 }

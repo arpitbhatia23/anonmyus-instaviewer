@@ -12,7 +12,9 @@ useEffect(() => {
   if (userdetails) {
       setprofilepic(userdetails.profile_pic_url);
   }
+  
 }, [userdetails]);
+
 
 console.log(profilepic)
   return ( <> { userdetails ?(

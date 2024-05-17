@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { AiOutlineSearch } from "react-icons/ai";
 import  {setdata}  from '../store/authslice';
@@ -42,7 +42,7 @@ function Search({className=''}) {
   return (
 
     <div className={`flex w-full py-4  px-2 ${className} md:justify-end`}>
-      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link 'className='rounded-xl indent-2 bg-transparent border-2 text-black '/> <span className='text-2xl text-white px-2 ' onClick={handelclick}>
+      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link' className='rounded-xl indent-2  border-2 text-black '/> <span className='text-2xl text-white px-2 ' onClick={handelclick}>
         <AiOutlineSearch/></span>
     </div>
   )
