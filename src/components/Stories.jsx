@@ -82,7 +82,7 @@ return !loading? (
    stories?.data?.items?.lenght===0?(<div>no stories</div>):null
 
     }
-    </div> ):
+    </div> ):user&&
     <div className='w-full  flex flex-col  items-center text-black text-center'>
       loading...
     </div>
