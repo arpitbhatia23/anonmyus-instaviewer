@@ -11,7 +11,7 @@ function Home() {
 
     
         <div className='w-full min-h-96 mt-4 text-center flex flex-col items-center justify-center '>
-       <div className='text-center text-black text-2xl font-cursive'>view insta story & post anonymously</div>
+       <div className='text-center  text-2xl font-cursive'>view insta story & post anonymously</div>
            <div> <Search/></div>  
                <Profile/> 
                <Profilenav/>
