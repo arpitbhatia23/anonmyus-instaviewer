@@ -26,7 +26,7 @@ const Profilenav = () => {
     const profiledetail=profiledata?.data?.data
   return (<>
   {profiledetail&&
-    <div className=' flex justify-center items-center space-x-24 text-black font-cursive  text-2xl py-8'>
+    <div className=' flex justify-center items-center space-x-24  font-cursive  text-2xl py-8'>
       { profilenav.map(({id,names,slug})=>(
      <ul>
  <li key={id}  > <NavLink to={slug}><button >{names}</button></NavLink> </li> </ul>

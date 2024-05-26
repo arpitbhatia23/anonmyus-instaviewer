@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import {Logout,Container,Login, Logo} from '../index'
+import Themeswitcher from '../Themeswitcher'
 function Header() {
    const  authstatus  = useSelector((state)=>state.auth.status)
    const navigate = useNavigate()
@@ -22,36 +23,40 @@ function Header() {
 
    }
 
-]
+]   
+const theme= useSelector(state=>state.theme.theme)
+
   return (
-    <header className='py-3 shadow bg-slate-900'>
+    <header className={`py-3 shadow-sm shadow-black `}>
         <Container>
             <nav className='flex'>
             <div className='mr-4'>
                 <Link to='/'>
-                    <Logo className='text-white'/>
+                    <Logo />
                 </Link>
             </div>
             <ul className='flex ml-auto' >
 
            {navitems.map((item)=>item.active?(
             <li key={item.name}>
-            <button className='inline-block px-4 py-2 duration-200 text-white hover:bg-blue-600 rounded-full' onClick={()=>navigate(item.slug)}>{item.name}</button>
+            <button className='inline-block px-4 py-2 duration-200  hover:bg-blue-600 rounded-full' onClick={()=>navigate(item.slug)}>{item.name}</button>
 
 
             </li>
 
            ):null)}
             <li>
+
                 {
                     authstatus&&(
                         <li>
-                        <Logout/>    
+                        <Logout/>  
                         </li>
                     )
                 }
             </li>
-
+<li>            <Themeswitcher/>  
+</li>
             </ul>
 
             </nav>

@@ -1,4 +1,4 @@
-import { configureStore,combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import rootReducers from "./authslice";
 const store =configureStore( {
    reducer:rootReducers

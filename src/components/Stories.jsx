@@ -56,12 +56,12 @@ useEffect(()=>{
 // };
 const items=stories?.data?.items
 return !loading? (
-    <div className='w-full    text-black text-center'>   {user&&stories&&stories.data&&stories.data.items? <div className='grid grid-cols-1 justify-items- md:grid-cols-4 center m-2 gap-4'> 
+    <div className='w-full     text-center'>   {user&&stories&&stories.data&&stories.data.items? <div className='grid grid-cols-1 justify-items- md:grid-cols-4 center m-2 gap-4'> 
       {error && <div> {error}</div>}
       {items.map(items=>(
        <div  key={items.id}>
 
-       <div className='bg-black flex justify-center'>
+       <div className='flex justify-center'>
     {items.media_type===2?(
         <video  src={ items&&items.video_url} controls className='h-[400px] w-[350px]' ></video> 
         
@@ -83,7 +83,7 @@ return !loading? (
 
     }
     </div> ):user&&
-    <div className='w-full  flex flex-col  items-center text-black text-center'>
+    <div className='w-full  flex flex-col  items-center text-center'>
       loading...
     </div>
   

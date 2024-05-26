@@ -37,10 +37,25 @@ export const dataslice =createSlice({
     }
 })
 
+export const themeProvider= createSlice({
+    name:"Theme",
+    initialState:{
+        theme:"dark",
+    },
+    reducers:{
+        settheme:(state,action)=>{
+            state.theme=action.payload
+    }
+}
+
+})
+
 export const {login,logout}=authslice.actions
 export const {setdata}=dataslice.actions
+export const {settheme}=themeProvider.actions
 const rootReducers=combineReducers({
     data:dataslice.reducer,
-    auth:authslice.reducer
+    auth:authslice.reducer,
+    theme:themeProvider.reducer,
 })
 export default rootReducers;

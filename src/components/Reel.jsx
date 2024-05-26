@@ -36,14 +36,14 @@ useEffect(()=>{
 },[user])
   
   return (<>
-   <div className='w-full   text-black'>   {user&&reel&&reel.data&&reel.data.items?
+   <div className='w-full   '>   {user&&reel&&reel.data&&reel.data.items?
     <div className=' grid grid-cols-1 md:grid-cols-4 m-2 gap-6  text-center'> 
       
       
       {items.map(items=>(
        <div  key={items.id}>
   
-       <div className='  flex  bg-black justify-center '>
+       <div className='  flex  justify-center '>
         <video  src={ items&& items.video_url} controls className='h-[600px] w-[400px] mt-3 bg-slate-500' ></video> <br />
 
         </div>

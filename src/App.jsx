@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { login,logout } from './store/authslice'
 import authservice from './appwrite/auth'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Header from './components/header/Header'
 import { Outlet } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
@@ -20,10 +20,10 @@ authservice.getCurrentUser()
 })
 .finally(() => setloading(false))
 },[])
-
+const theme=useSelector(state=>state.theme.theme)
   return !loading ? (
     <>
-    <div className=' min-h-screen flex flex-wrap content-between bg-gray-400'>
+    <div className={` min-h-screen flex flex-wrap content-between ${theme==='dark'?'bg-white text-blue-500': 'bg-gray-500 text-black'}`}>
       <div className='w-full block '>
         <Header/>
           <main>
