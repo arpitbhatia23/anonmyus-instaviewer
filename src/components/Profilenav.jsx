@@ -21,7 +21,6 @@ const Profilenav = () => {
         },
        
     ]
-    const navigate=useNavigate()
     const profiledata=useSelector(state=>state.data)
     const profiledetail=profiledata?.data?.data
   return (<>
@@ -29,7 +28,7 @@ const Profilenav = () => {
     <div className=' flex justify-center items-center space-x-24  font-cursive  text-2xl py-8'>
       { profilenav.map(({id,names,slug})=>(
      <ul>
- <li key={id}  > <NavLink to={slug}><button >{names}</button></NavLink> </li> </ul>
+ <li key={id}  > <NavLink to={slug} className={({isActive})=>`${isActive?'text-red-500 border-b-2 border-b-black  ':' '} `}>{names}</NavLink> </li> </ul>
       ))}
     </div>
      }
