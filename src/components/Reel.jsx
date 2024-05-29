@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Conf from '../conf/conf'
-
+import { Button } from "../components/index";
 const Reel = () => {
   const [reel,setreel]=useState()
   const username = useSelector(state=>state.data)
@@ -43,10 +43,12 @@ useEffect(()=>{
       {items.map(items=>(
        <div  key={items.id}>
   
-       <div className='  flex  justify-center '>
-        <video  src={ items&& items.video_url} controls className='h-[600px] w-[400px] mt-3 bg-slate-500' ></video> <br />
+       <div className='  flex '>
+        <video  src={ items&& items.video_url} controls className='  border border-gray-950' ></video> <br />
 
         </div>
+        <a href={items.video_url} target='_blank' download="true"><Button className='m-2'  > view </Button> </a> 
+
        </div>
       )
   )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { AiOutlineSearch } from "react-icons/ai";
 import  {setdata}  from '../store/authslice';
@@ -16,7 +16,7 @@ function Search({className=''}) {
     }
     const [query ,setquery ]=useState('')
     const dispatch =useDispatch()
-    const search = async(user)=>{
+    const search = useCallback( async(user)=>{
         console.log(user)
         const params = new URLSearchParams({ username_or_id_or_url: user && user, url_embed_safe:true });
         const url = `https://instagram-scraper-api2.p.rapidapi.com/v1/info?${params}`
@@ -36,13 +36,13 @@ function Search({className=''}) {
          }
         catch(error){ 
           console.log(error)
-        }}
+        }},[query])
     
 
   return (
 
     <div className={`flex w-full py-4  px-2 ${className} md:justify-end`}>
-      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link' className='rounded-xl indent-2  border-2 text-black '/> 
+      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link' className='rounded-xl indent-2  border-2  '/> 
       <span className='text-2xl px-2 ' onClick={handelclick}>
         <AiOutlineSearch/>
         </span>

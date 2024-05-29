@@ -15,7 +15,7 @@ const[error,seterror]=useState(false)
       setloading(true)
       const params = new URLSearchParams({ username_or_id_or_url: user && user, url_embed_safe:true });
 
-        const url = `https://instagram-scraper-api2.p.rapidapi.com/v1/stories?${params}`
+        const url = `https://instagram-scraper-api2.p.rapidapi.com/v1/stories?username_or_id_or_url=${user}&url_embed_safe=true`
         const option = {
           method :'GET',
           headers:{
@@ -39,21 +39,22 @@ useEffect(()=>{
   search()}
 },[user])
 
-// const handleDownload = async (url) => {
-//   try {
-//     const response = await fetch(url);
-//     const blob = await response.blob();
-//     const urlObject = window.URL.createObjectURL(blob);
-//     const a = document.createElement('a');
-//     a.href = urlObject;
-//     a.download = 'story.mp4'; // You can customize the filename here
-//     document.body.appendChild(a);
-//     a.click();
-//     document.body.removeChild(a);
-//   } catch (error) {
-//     console.error('Error downloading the file:', error);
-//   }
-// };
+const handleDownload = async (url, filename) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const urlObject = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = urlObject;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(urlObject);
+  } catch (error) {
+    console.error('Error downloading the file:', error);
+  }
+};
 const items=stories?.data?.items
 return !loading? (
     <div className='w-full     text-center'>   {user&&stories&&stories.data&&stories.data.items? <div className='grid grid-cols-1 justify-items- md:grid-cols-4 center m-2 gap-4'> 
@@ -71,8 +72,9 @@ return !loading? (
       ?(
         <img src={items.thumbnail_url} alt=""  className='h-[400px] w-[350px]'/>
       ):null }
-        </div>
-      {/* <Button className='mt-2' onClick={() => handleDownload(items.video_url)}>download</Button> */}
+        </div> 
+       
+        <a href={items.media_type===2?items.video_url:items.thumbnail_url} target='_blank' ><Button className='m-2'  > view </Button> </a> 
 
        </div>
       )
