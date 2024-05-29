@@ -39,7 +39,7 @@ setloading(false)
       seterror(true)
       setloading(false)
     }
-  },[dispatch])
+  },[])
   useEffect(()=>{
     if(user){
     search()
