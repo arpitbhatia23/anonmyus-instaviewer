@@ -6,55 +6,28 @@ import Conf from '../conf/conf';
 import { useCallback } from 'react';
 import Button from './Button';
 import { setpost } from '../store/authslice';
+import Usequery from './Usequery';
 const Post = () => {
   const username = useSelector(state=>state.data)
   const user =username?.data?.data?.username 
   console.log(user)
-  const dispatch=useDispatch()
-const post = useSelector(state=>state.post.posts)
-const [loading, setloading]=useState(true)
-const [error,seterror]=useState(false)
-console.log(post)
-  const search =useCallback( async()=>{
-    seterror(false)
-    setloading(true)
-    const url = `https://instagram-scraper-api2.p.rapidapi.com/v1.2/posts?username_or_id_or_url=${user}&url_embed_safe=true`
-    const option = {
-      method : 'GET',
-      headers:{
-        'X-RapidAPI-Key': Conf.apiKey,
-                  'X-RapidAPI-Host': 'instagram-scraper-api2.p.rapidapi.com'
-      }
-
-    }
-    try {
-      
-      const response =await fetch(url,option)
-      const data = await response.json()
-dispatch(setpost(data))
-setloading(false)
-    }
-    catch (error){
-      console.log(error)
-      seterror(true)
-      setloading(false)
-    }
-  },[])
-  useEffect(()=>{
-    if(user){
-    search()
-    }
-  },[user])
+  const {post,loading,error}=Usequery(`https://instagram-scraper-api2.p.rapidapi.com/v1.2/posts?username_or_id_or_url=${user}&url_embed_safe=true`)
+if (loading){
   if(user){
-if(loading){
-  if(user){
-  return <div>Loading...</div>}}
+    return(
+      <div>loading...</div>
+    )}
 }
-if(error){
-  return <div>{error}</div>
- 
+if (error){
+  return(
+    <div>{error}</div>
+  )
 }
-
+if(post?.data?.items.length === 0){
+  return(
+    <div>no stories</div>
+  )
+}
  const  renderMedia=(item, index)=>{
   
 if(item.carousel_media){
@@ -77,7 +50,7 @@ if(item.carousel_media){
  if(item.media_name==='album_item'){
   return(<div>
 
- <img src={item.thumbnail_url} alt={`album-item-${index}`} className='mt2 border border-gray-950'/>
+ <img src={item.thumbnail_url} alt={`album-item-${index}`} className='mt-2 border border-gray-950'/>
  <div className='flex' >
  <a href={item.thumbnail_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
  </div>
@@ -96,7 +69,7 @@ if(item.media_name==="post"){
 if(item.is_video){
   return(
 <div>
- <video src={item.video_url} controls className='h-[408px] w-[350px] bg-slate-400 mt-2 border border-gray-950'></video>
+ <video src={item.video_url} controls className=' mt-2 border border-gray-950'></video>
  <div > 
  <a href={item.video_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
       </div>

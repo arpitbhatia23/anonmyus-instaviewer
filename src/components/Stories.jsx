@@ -2,93 +2,73 @@ import React, { useCallback, useEffect, useState } from 'react'
 import {useSelector } from 'react-redux'
 import Button from './Button'
 import Conf from '../conf/conf'
+import Usequery from './Usequery'
 const Stories = () => {
  const username = useSelector(state=>state.data)
  const user =username?.data?.data?.username 
-const [stories,setstories]=useState(null)
-const [loading,setloading]=useState(true)
-const[error,seterror]=useState(false)
- console.log(user)
+const {post,error,loading}=Usequery(`https://instagram-scraper-api2.p.rapidapi.com/v1/stories?username_or_id_or_url=${user}&url_embed_safe=true`)
 
-    const search = useCallback( async()=>{
-      seterror(false)
-      setloading(true)
-      const params = new URLSearchParams({ username_or_id_or_url: user && user, url_embed_safe:true });
+    console.log(post)
 
-        const url = `https://instagram-scraper-api2.p.rapidapi.com/v1/stories?username_or_id_or_url=${user}&url_embed_safe=true`
-        const option = {
-          method :'GET',
-          headers:{
-            'X-RapidAPI-Key':Conf.apiKey,
-                      'X-RapidAPI-Host': 'instagram-scraper-api2.p.rapidapi.com'
-          }
-      
-        }
-        try{const response = await fetch(url,option)
-          const data =await response.json()
-         console.log(data)
-         setstories(data)
-         }
-        catch(error){ 
-          console.log(error)
-          seterror(error.message)
-        }
-      setloading(false)},[user])
-useEffect(()=>{
-  if(user){
-  search()}
-},[user])
 
-const handleDownload = async (url, filename) => {
-  try {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    const urlObject = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = urlObject;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(urlObject);
-  } catch (error) {
-    console.error('Error downloading the file:', error);
-  }
-};
-const items=stories?.data?.items
-return !loading? (
-    <div className='w-full     text-center'>   {user&&stories&&stories.data&&stories.data.items? <div className='grid grid-cols-1 justify-items- md:grid-cols-4 center m-2 gap-4'> 
-      {error && <div> {error}</div>}
-      {items.map(items=>(
-       <div  key={items.id}>
-
-       <div className='flex justify-center'>
-    {items.media_type===2?(
-        <video  src={ items&&items.video_url} controls className='h-[400px] w-[350px]' ></video> 
-        
-      )
-      
-      :items.media_type===1
-      ?(
-        <img src={items.thumbnail_url} alt=""  className='h-[400px] w-[350px]'/>
-      ):null }
-        </div> 
-       
-        <a href={items.media_type===2?items.video_url:items.thumbnail_url} target='_blank' ><Button className='m-2'  > view </Button> </a> 
-
-       </div>
-      )
-)}
+ const rendermedia=(items)=> {
   
-      </div>:
-   stories?.data?.items?.lenght===0?(<div>no stories</div>):null
-
-    }
-    </div> ):user&&
-    <div className='w-full  flex flex-col  items-center text-center'>
-      loading...
+   if(items.media_type===2){
+   return ( <div className='mt-2'>
+   <video  src={ items&&items.video_url} controls className=' h-[400px] w-[350px] border border-black mt-2' ></video> </div>
+  )
+   }
+   if (items.media_type===1){
+    return( <div className='mt-2'>
+    <img src={items.thumbnail_url} alt=""  className='h-[400px] w-[350px] border border-black mt-2'/>
     </div>
-  
+    )
+   } 
+   return
+ }
+
+ if (loading){
+  if(user){
+    return(
+      <div>loading...</div>
+    )}
+}
+if (error){
+  return(
+    <div>{error}</div>
+  )
+}
+if(post?.data?.items.length === 0){
+  return(
+    <div>no stories</div>
+  )
+}
+
+return (
+  <div className=' w-full'>
+    {
+      user&&post&&post.data&&<div className='grid grid-cols-1 md:grid-cols-4'>
+        {
+          post.data.items.map((items,id)=>(
+            <div key={id} className='flex justify-center py-8  mt-8'>
+              <div className=''>
+              {rendermedia(items,id)}</div>
+            </div>
+
+          ))
+        }
+        </div>
+    }
+
+  </div>
+)
+
+
+
+
+
+
+
 }
 
 export default Stories
