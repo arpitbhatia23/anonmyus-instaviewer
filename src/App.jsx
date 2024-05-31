@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Header from './components/header/Header'
 import { Outlet } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
+import toast, { Toaster } from 'react-hot-toast'
 function App() {
   const dispatch = useDispatch()
   const [loading ,setloading] = useState(true)
@@ -12,6 +13,7 @@ useEffect(()=>{
 authservice.getCurrentUser()
 .then((userData)=>{
   if(userData){
+    toast.success('login')
     dispatch(login({userData}))
   }
   else{
@@ -23,6 +25,7 @@ authservice.getCurrentUser()
 const theme=useSelector(state=>state.theme.theme)
   return !loading ? (
     <>
+    <Toaster/>
     <div className={` min-h-screen flex flex-wrap content-between ${theme==='dark'?'bg-white text-blue-500': 'bg-gray-500 text-black'}`}>
       <div className='w-full block '>
         <Header/>
