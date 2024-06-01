@@ -25,18 +25,12 @@ function App() {
       .finally(() => setLoading(false));
   }, [dispatch]);
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
+  
 
   return !loading ? (
     <>
       <Toaster />
-      <div className={`min-h-screen flex flex-wrap content-between ${theme === 'dark' ? 'bg-black text-white' : 'bg-gray-200 text-blue-500'}`}>
+      <div className={`min-h-screen flex flex-wrap content-between ${theme === 'dark' ? 'bg-white text-blue-500' : 'bg-black text-white'}`}>
         <div className="w-full block">
           <Header />
           <main>
