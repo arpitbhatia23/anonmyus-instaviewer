@@ -16,7 +16,7 @@ function App() {
     authservice.getCurrentUser()
       .then((userData) => {
         if (userData) {
-          toast.success('login');
+          toast.success('wellcome to instaviewer');
           dispatch(login({ userData }));
         } else {
           dispatch(logout());
