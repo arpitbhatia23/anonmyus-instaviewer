@@ -27,7 +27,7 @@ function Header() {
 const theme= useSelector(state=>state.theme.theme)
 
   return (
-    <header className={`py-3 shadow-sm shadow-black `}>
+    <header className={`py-3  ${theme==='dark'?'shadow-sm shadow-white':'shadow-sm shadow-black'} `}>
         <Container>
             <nav className='flex'>
             <div className='mr-4'>

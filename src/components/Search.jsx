@@ -42,7 +42,7 @@ function Search({className=''}) {
   return (
 
     <div className={`flex w-full py-4  px-2 ${className} md:justify-end`}>
-      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link' className='rounded-xl indent-2  border-2  '/> 
+      <input type="text"  onKeyPress={handelpress}  onChange={(e)=>setquery(e.target.value)}value={query}  placeholder='username or userid_link' className='rounded-xl indent-2  border-2  text-black '/> 
       <span className='text-2xl px-2 ' onClick={handelclick}>
         <AiOutlineSearch/>
         </span>

@@ -33,10 +33,10 @@ if(post?.data?.items.length === 0){
 if(item.carousel_media){
 
   return(< div>
- <Carousel  showThumbs={false} thumbWidth={'400px'} showIndicators={false} showStatus={false} className='w-[350px] flex justify-center '>                      
+ <Carousel  showThumbs={false} thumbWidth={'400px'} showIndicators={false} showStatus={false} className='w-[350px] flex justify-center border-white '>                      
           { item.carousel_media.map((carouselItem, carouselIndex) => (
              <div key={carouselIndex} >
-               <img src={carouselItem.thumbnail_url} alt='image' className='mt-4 h-[400px] w-[350px] border border-gray-950 text-center'/>
+               <img src={carouselItem.thumbnail_url} alt='image' className='mt-4 h-[400px] w-[350px] border  text-center'/>
              <a href={carouselItem.thumbnail_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
          </div>
             
@@ -50,7 +50,7 @@ if(item.carousel_media){
  if(item.media_name==='album_item'){
   return(<div>
 
- <img src={item.thumbnail_url} alt={`album-item-${index}`} className='mt-2 border border-gray-950'/>
+ <img src={item.thumbnail_url} alt={`album-item-${index}`} className='mt-2 border border-white'/>
  <div className='flex' >
  <a href={item.thumbnail_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
  </div>
@@ -60,7 +60,7 @@ if(item.carousel_media){
 if(item.media_name==="post"){
   return(<div>
   
- <img src={item.thumbnail_url} alt={`post-item-${index}`} className='h-[400px] w-[350px] mt-2 border border-gray-950' />
+ <img src={item.thumbnail_url} alt={`post-item-${index}`} className='h-[400px] w-[350px] mt-2 border border-white' />
   <a href={item.thumbnail_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
      
       </div>
@@ -69,7 +69,7 @@ if(item.media_name==="post"){
 if(item.is_video){
   return(
 <div>
- <video src={item.video_url} controls className=' mt-2 border border-gray-950'></video>
+ <video src={item.video_url} controls className='h-[400px] w-[350px] mt-2 border border-white'></video>
  <div > 
  <a href={item.video_url} target='_blank'><Button className='m-2'  > view </Button> </a> 
       </div>

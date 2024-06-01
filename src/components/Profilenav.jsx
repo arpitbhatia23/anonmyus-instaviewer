@@ -28,7 +28,7 @@ const Profilenav = () => {
     <div className=' flex justify-center items-center space-x-24  font-cursive  text-2xl py-8'>
       { profilenav.map(({id,names,slug})=>(
      <ul>
- <li key={id}  > <NavLink to={slug} className={({isActive})=>`${isActive?'text-red-500 border-b-2 border-b-black  ':' '} `}>{names}</NavLink> </li> </ul>
+ <li key={id}  > <NavLink to={slug} className={({isActive})=>`${isActive?'text-red-500 border-b-2 border-b-red-500  ':' '} `}>{names}</NavLink> </li> </ul>
       ))}
     </div>
      }
