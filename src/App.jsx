@@ -30,7 +30,7 @@ function App() {
   return !loading ? (
     <>
       <Toaster />
-      <div className={`min-h-screen flex flex-wrap content-between ${theme === 'dark' ? 'bg-white text-blue-500' : 'bg-black text-white'}`}>
+      <div className={`min-h-screen flex flex-wrap content-between ${theme === 'dark' ? 'bg-white text-blue-500' : 'bg-black text-red-500'}`}>
         <div className="w-full block">
           <Header />
           <main>
