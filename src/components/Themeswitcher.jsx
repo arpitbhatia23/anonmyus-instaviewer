@@ -8,7 +8,6 @@ function Themeswitcher() {
         dispatch(settheme(theme === 'light' ? 'dark' : 'light'))
      }
      const theme = useSelector((state)=>state.theme.theme)
-     console.log("hi",theme)
   return (
     <button onClick={toggletheme} className='px-4 py-2  text-xl  flex justify-center items-center'>
         {theme==='light'?<IoSunnyOutline/>:<IoMoonOutline/>}
