@@ -29,6 +29,16 @@ function App() {
 
   return !loading ? (
     <>
+    <Helmet>
+      <title>Anonymous InstaViewer - View Instagram Anonymously</title>
+      <meta name="description" content="Anonymous InstaViewer allows you to view Instagram profiles and posts anonymously. Browse Instagram securely without leaving a trace." />
+      <meta name="keywords" content="Anonymous InstaViewer, view Instagram anonymously, Instagram privacy, anonymous Instagram viewer, secure Instagram browsing, Instagram viewer, private Instagram access" />
+      <meta name="author" content="Your Company Name" />
+      <meta property="og:title" content="Anonymous InstaViewer - View Instagram Anonymously" />
+      <meta property="og:description" content="Anonymous InstaViewer allows you to view Instagram profiles and posts anonymously. Enjoy private browsing with our secure platform." />
+      <meta property="og:url" content="https://anonmyus-instaviewers.vercel.app/" />
+      <meta property="og:type" content="website" />
+    </Helmet>
       <Toaster />
       <div className={`min-h-screen flex flex-wrap content-between ${theme === 'dark' ? 'bg-white text-blue-500' : 'bg-black text-red-500'}`}>
         <div className="w-full block">
