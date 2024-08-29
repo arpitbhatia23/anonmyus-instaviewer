@@ -5,7 +5,7 @@ import {login} from '../store/authslice'
 import {Button, Input,Logo} from './index.js'
 import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
-
+import { Helmet } from 'react-helmet'
 function Signup() {
     const navigate = useNavigate()
     const [error, setError] = useState("")
@@ -28,6 +28,16 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center">
+         <Helmet>
+        <title>Sign Up - YourApp</title>
+        <meta name="description" content="Create a new account on YourApp. Sign up to get started and access personalized features and content." />
+        <meta name="keywords" content="sign up, create account, user registration, YourApp, signup page" />
+        <meta property="og:title" content="Sign Up - YourApp" />
+        <meta property="og:description" content="Sign up to YourApp to create a new account and start exploring personalized features and content." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yourwebsite.com/signup" />
+        <meta property="og:image" content="URL-to-your-image.jpg" />
+      </Helmet>
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
             <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">

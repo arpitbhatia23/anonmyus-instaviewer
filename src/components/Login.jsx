@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux"
 import authservice from "../appwrite/auth"
 import {useForm} from "react-hook-form"
 import toast from 'react-hot-toast'
-
+import { Helmet } from 'react-helmet'
 function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -32,6 +32,18 @@ function Login() {
     <div
     className='flex items-center justify-center w-full py-8'
     >
+
+<Helmet>
+        <title>Login - YourApp</title>
+        <meta name="description" content="Sign in to your account on YourApp. Access your personalized dashboard and manage your preferences." />
+        <meta name="keywords" content="login, sign in, user account, YourApp, authentication, access dashboard" />
+        <meta property="og:title" content="Login - YourApp" />
+        <meta property="og:description" content="Sign in to YourApp to access your dashboard and manage your account settings." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yourwebsite.com/login" />
+        <meta property="og:image" content="URL-to-your-image.jpg" />
+      </Helmet>
+
         <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className="mb-2 flex justify-center">
                     <span className="inline-block w-full max-w-[100px]">
